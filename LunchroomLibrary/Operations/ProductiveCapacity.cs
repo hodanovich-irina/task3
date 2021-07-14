@@ -15,6 +15,10 @@ namespace LunchroomLibrary.Operations
 
         public int Number { get; set; }
 
+        public override string ToString() 
+        {
+            return Number.ToString();
+        }
         public override bool Equals(object obj)
         {
             return obj is ProductiveCapacity<T> capacity &&

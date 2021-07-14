@@ -6,18 +6,12 @@ using System.Threading.Tasks;
 
 namespace LunchroomLibrary.Operations
 {
-    public class Cutting : ProductiveCapacity<Cutting>, IOperation
+    public class Cutting : Operation
     {
-        public Cutting(string name, DateTime lasting, double price, int number) : base(number)
+        public Cutting(string name, double lasting, double price, int number) : base( name, lasting, price, number)
         {
-            Name = name;
-            Lasting = lasting;
-            Price = price;
         }
 
-        public string Name { get; set; }
-        public DateTime Lasting { get; set; }
-        public double Price { get; set; }
 
         /// <summary>
         /// Method overriding Equals()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LunchroomLibrary.Operations;
 
 namespace LunchroomLibrary.LunchroomMenu
 {
@@ -12,7 +13,7 @@ namespace LunchroomLibrary.LunchroomMenu
         {
         }
 
-        public Dish(string name, Ingredient[] ingredients, string[] cookingSequence)
+        public Dish(string name, Ingredient[] ingredients, Operation[] cookingSequence)
         {
             Name = name;
             Ingredients = ingredients;
@@ -23,7 +24,7 @@ namespace LunchroomLibrary.LunchroomMenu
               
         public Ingredient[] Ingredients { get; set; }
          
-        public string[] CookingSequence { get; set; }
+        public Operation[] CookingSequence { get; set; }
 
         public double GetCost() 
         {

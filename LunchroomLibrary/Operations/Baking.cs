@@ -6,19 +6,11 @@ using System.Threading.Tasks;
 
 namespace LunchroomLibrary.Operations
 {
-    public class Baking : ProductiveCapacity<Baking> ,IOperation
+    public class Baking : Operation
     {
-        public Baking(string name, DateTime lasting, double price, int number) : base(number)
+        public Baking(string name, double lasting, double price, int number) : base(name, lasting, price, number)
         {
-            Name = name;
-            Lasting = lasting;
-            Price = price;
         }
-
-
-        public string Name { get; set; }
-        public DateTime Lasting { get; set; }
-        public double Price { get; set; }
 
         /// <summary>
         /// Method overriding Equals()
@@ -44,7 +36,7 @@ namespace LunchroomLibrary.Operations
         /// <returns>string</returns>
         public override string ToString()
         {
-            return base.ToString();
+            return Name + "(" + Lasting.ToString() + ", " + Price + ", " + Number +")" ;
         }
     }
 }

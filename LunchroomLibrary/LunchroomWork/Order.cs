@@ -24,24 +24,25 @@ namespace LunchroomLibrary.LunchroomWork
         public Dish[] Dishes{ get; set; }
         public Drink[] Drinks { get; set; }
         public int ClientId { get; set; }
-        //public double Price { get; set; }
 
         public override bool Equals(object obj)
         {
-            return obj is Order order &&
-                   EqualityComparer<Dish[]>.Default.Equals(Dishes, order.Dishes) &&
-                   EqualityComparer<Drink[]>.Default.Equals(Drinks, order.Drinks) &&
-                   ClientId == order.ClientId;// &&
-                   //Price == order.Price;
+            return base.Equals(obj);
         }
 
         public override int GetHashCode()
         {
-            int hashCode = -265333526;
-            hashCode = hashCode * -1521134295 + EqualityComparer<Dish[]>.Default.GetHashCode(Dishes);
-            hashCode = hashCode * -1521134295 + EqualityComparer<Drink[]>.Default.GetHashCode(Drinks);
-            hashCode = hashCode * -1521134295 + ClientId.GetHashCode();
-            return hashCode;
+            return base.GetHashCode();
         }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+        //public double Price { get; set; }
+
+
+
+
     }
 }

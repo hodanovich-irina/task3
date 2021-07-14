@@ -9,7 +9,7 @@ namespace LunchroomLibrary.Operations
     interface IOperation
     {
         string Name { get; set; }
-        DateTime Lasting { get; set; }
+        double Lasting { get; set; }
         double Price { get; set; }
     }
 }
