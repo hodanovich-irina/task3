@@ -8,26 +8,27 @@ namespace LunchroomLibrary.Operations
 {
     public class ProductiveCapacity<T>
     {
-        public ProductiveCapacity(int number)
+        public ProductiveCapacity() { }
+        public ProductiveCapacity(int maxNumber)
         {
-            Number = number;
+            MaxNumber = maxNumber;
         }
 
-        public int Number { get; set; }
+        public int MaxNumber { get; set; }
 
         public override string ToString() 
         {
-            return Number.ToString();
+            return MaxNumber.ToString();
         }
         public override bool Equals(object obj)
         {
             return obj is ProductiveCapacity<T> capacity &&
-                   Number == capacity.Number;
+                   MaxNumber == capacity.MaxNumber;
         }
 
         public override int GetHashCode()
         {
-            return 187193536 + Number.GetHashCode();
+            return 187193536 + MaxNumber.GetHashCode();
         }
     }
 }

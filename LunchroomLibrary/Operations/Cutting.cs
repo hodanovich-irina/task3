@@ -8,7 +8,8 @@ namespace LunchroomLibrary.Operations
 {
     public class Cutting : Operation
     {
-        public Cutting(string name, double lasting, double price, int number) : base( name, lasting, price, number)
+        public Cutting() { }
+        public Cutting(string name, double lasting, double price, DateTime startOperation, int number, int maxNumber) : base(name, lasting, price, startOperation, number, maxNumber)
         {
         }
 

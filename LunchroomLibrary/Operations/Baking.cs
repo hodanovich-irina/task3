@@ -8,9 +8,11 @@ namespace LunchroomLibrary.Operations
 {
     public class Baking : Operation
     {
-        public Baking(string name, double lasting, double price, int number) : base(name, lasting, price, number)
+        public Baking() { }
+        public Baking(string name, double lasting, double price, DateTime startOperation, int number, int maxNumber) : base(name, lasting, price, startOperation, number, maxNumber)
         {
         }
+
 
         /// <summary>
         /// Method overriding Equals()

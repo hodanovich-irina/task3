@@ -17,6 +17,7 @@ namespace LunchroomLibrary.LunchroomMenu
     /// </summary>
     public class Ingredient
     {
+        public const int startNumber = 100;
         /// <summary>
         /// Storage conditions
         /// </summary>
@@ -30,17 +31,21 @@ namespace LunchroomLibrary.LunchroomMenu
         /// Ingredient cost
         /// </summary>
         public double Price { get; set; }
+        public int Number { get; set; }
 
         /// <summary>
         /// Constructor with parametrs
         /// </summary>
-        /// <param name="IngredientName">Ingredient name</param>
-        /// <param name="Price">Ingredient cost</param>
-        public Ingredient(StorageConditions storageConditions, string ingredientName, double price)
+        /// <param name="storageConditions">storage conditions</param>
+        /// <param name="ingredientName">Ingredient name</param>
+        /// <param name="price">Ingredient cost</param>
+        /// <param name="number">number</param>
+        public Ingredient(StorageConditions storageConditions, string ingredientName, double price, int number)
         {
             StorageConditions = storageConditions;
             IngredientName = ingredientName;
             Price = price;
+            Number = number;
         }
         /// <summary>
         /// Empty constructor
@@ -62,13 +67,18 @@ namespace LunchroomLibrary.LunchroomMenu
         /// Method overriding GetHashCode()
         /// </summary>
         /// <returns>Hash-code</returns>
+
         public override int GetHashCode()
         {
-            int hashCode = 671967871;
+            int hashCode = 679536327;
+            hashCode = hashCode * -1521134295 + StorageConditions.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(IngredientName);
             hashCode = hashCode * -1521134295 + Price.GetHashCode();
+            hashCode = hashCode * -1521134295 + Number.GetHashCode();
             return hashCode;
         }
+
+
 
         /// <summary>
         /// Method overriding Equals()
@@ -80,7 +90,10 @@ namespace LunchroomLibrary.LunchroomMenu
             return obj is Ingredient ingredient &&
                    StorageConditions == ingredient.StorageConditions &&
                    IngredientName == ingredient.IngredientName &&
-                   Price == ingredient.Price;
+                   Price == ingredient.Price &&
+                   Number == ingredient.Number;
         }
+
+        
     }
 }

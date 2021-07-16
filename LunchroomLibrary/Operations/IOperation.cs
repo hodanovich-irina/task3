@@ -11,5 +11,7 @@ namespace LunchroomLibrary.Operations
         string Name { get; set; }
         double Lasting { get; set; }
         double Price { get; set; }
+        int Number { get; set; }
+        DateTime StartOperation { get; set; }
     }
 }

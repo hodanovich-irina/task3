@@ -35,6 +35,7 @@ namespace LunchroomLibrary.LunchroomMenu
             }
             return cost;
         }
+        public override string ToString() => Name;
         //public abstract List<T> Select();
 
     }
