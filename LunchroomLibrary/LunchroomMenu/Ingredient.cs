@@ -6,22 +6,40 @@ using System.Threading.Tasks;
 
 namespace LunchroomLibrary.LunchroomMenu
 {
+    /// <summary>
+    /// Enum of storage conditions
+    /// </summary>
     public enum StorageConditions
     {
+        /// <summary>
+        /// in refrigerator
+        /// </summary>
         InRefrigerator = 1,
+        /// <summary>
+        /// in freezer
+        /// </summary>
         InFreezer,
+        /// <summary>
+        /// in kitchen cabinet
+        /// </summary>
         InKitchenCabinet
     }
+
     /// <summary>
-    /// Ingredient description
+    /// Class for ingredient description
     /// </summary>
     public class Ingredient
     {
+        /// <summary>
+        /// Start number of ingredients
+        /// </summary>
         public const int startNumber = 100;
+
         /// <summary>
         /// Storage conditions
         /// </summary>
         public StorageConditions StorageConditions { get; set; }
+
         /// <summary>
         /// Ingredient name
         /// </summary>
@@ -31,6 +49,10 @@ namespace LunchroomLibrary.LunchroomMenu
         /// Ingredient cost
         /// </summary>
         public double Price { get; set; }
+
+        /// <summary>
+        /// Number of ingredients
+        /// </summary>
         public int Number { get; set; }
 
         /// <summary>
@@ -47,6 +69,7 @@ namespace LunchroomLibrary.LunchroomMenu
             Price = price;
             Number = number;
         }
+
         /// <summary>
         /// Empty constructor
         /// </summary>
@@ -67,7 +90,6 @@ namespace LunchroomLibrary.LunchroomMenu
         /// Method overriding GetHashCode()
         /// </summary>
         /// <returns>Hash-code</returns>
-
         public override int GetHashCode()
         {
             int hashCode = 679536327;
@@ -77,8 +99,6 @@ namespace LunchroomLibrary.LunchroomMenu
             hashCode = hashCode * -1521134295 + Number.GetHashCode();
             return hashCode;
         }
-
-
 
         /// <summary>
         /// Method overriding Equals()

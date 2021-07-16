@@ -6,13 +6,28 @@ using System.Threading.Tasks;
 
 namespace LunchroomLibrary.Operations
 {
+    /// <summary>
+    /// Class for cutting operation
+    /// </summary>
     public class Cutting : Operation
     {
+        /// <summary>
+        /// Empty constructor
+        /// </summary>
         public Cutting() { }
+
+        /// <summary>
+        /// Constructor with params
+        /// </summary>
+        /// <param name="name">Name of operation</param>
+        /// <param name="lasting">Lasting of operation</param>
+        /// <param name="price">Price of operation</param>
+        /// <param name="startOperation">Start time of operation</param>
+        /// <param name="number">Number of operation</param>
+        /// <param name="maxNumber">Max number of operation</param>
         public Cutting(string name, double lasting, double price, DateTime startOperation, int number, int maxNumber) : base(name, lasting, price, startOperation, number, maxNumber)
         {
         }
-
 
         /// <summary>
         /// Method overriding Equals()
@@ -23,6 +38,7 @@ namespace LunchroomLibrary.Operations
         {
             return base.Equals(obj);
         }
+
         /// <summary>
         /// Method overriding GetHashCode()
         /// </summary>

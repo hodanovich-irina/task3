@@ -9,8 +9,16 @@ using LunchroomLibrary.Operations;
 
 namespace LunchroomLibrary.DataWork
 {
+    /// <summary>
+    /// Class for work with data
+    /// </summary>
     public class WorkWithData
     {
+        /// <summary>
+        /// Method for finding free productive capacity
+        /// </summary>
+        /// <param name="orders">Collection of order</param>
+        /// <returns>Collection of string</returns>
         public List<string> FreeProductiveCapacity(List<Order> orders) 
         {
             List<Operation> operations = new List<Operation>();
@@ -28,6 +36,11 @@ namespace LunchroomLibrary.DataWork
             }
             return freeProdCapacity;
         }
+        /// <summary>
+        /// Method for calculating number of ingredient
+        /// </summary>
+        /// <param name="orders">Collection of order</param>
+        /// <returns>Collection of string</returns>
         public List<string> NumberOfIngrediets(List<Order> orders) 
         {
             List<string> freeIngredients = new List<string>();
@@ -49,7 +62,13 @@ namespace LunchroomLibrary.DataWork
                 freeIngredients.Add(v.Key + "(in stock: " + (Ingredient.startNumber - v.Value) + ")");
             return freeIngredients;
         }
-
+        /// <summary>
+        /// Method for looking orders
+        /// </summary>
+        /// <param name="start">start date</param>
+        /// <param name="end">end date</param>
+        /// <param name="orders">Collection of order</param>
+        /// <returns>Collection of order</returns>
         public List<Order> LookOrders(DateTime start, DateTime end, List<Order> orders) 
         {
             List<Order> orders1 = new List<Order>();
@@ -60,6 +79,11 @@ namespace LunchroomLibrary.DataWork
             }
             return orders1;
         }
+        /// <summary>
+        /// Method for find the most popular ingredient
+        /// </summary>
+        /// <param name="orders">Collection of order</param>
+        /// <returns>Collection of string</returns>
         public List<string> TheMostPopularIngredient(List<Order> orders) 
         {
             List<Ingredient> ingredients = new List<Ingredient>();
@@ -82,6 +106,11 @@ namespace LunchroomLibrary.DataWork
                     mostPopular.Add(v.Key + "(used:" + v.Value + ")");
             return mostPopular;
         }
+        /// <summary>
+        /// Method for find the most unpopular ingredient
+        /// </summary>
+        /// <param name="orders">Collection of order</param>
+        /// <returns>Collection of string</returns>
         public List<string> TheMostUnpopularIngredient(List<Order> orders) 
         {
             List<Ingredient> ingredients = new List<Ingredient>();
@@ -104,6 +133,12 @@ namespace LunchroomLibrary.DataWork
                     mostUnpopular.Add(v.Key + "(used:" + v.Value + ")");
             return mostUnpopular;
         }
+        /// <summary>
+        /// Method for find ingredient by storage conditions
+        /// </summary>
+        /// <param name="storageConditions">storage conditions</param>
+        /// <param name="orders">Collection of order</param>
+        /// <returns>Collection of ingredients</returns>
         public List<Ingredient> FindIngredient(StorageConditions storageConditions, List<Order> orders) 
         {
             List<Ingredient> ingredients = new List<Ingredient>();
@@ -119,6 +154,11 @@ namespace LunchroomLibrary.DataWork
             return ingredientsByStorageConditions;
 
         }
+        /// <summary>
+        /// ethod for find the longest and expensive operation
+        /// </summary>
+        /// <param name="orders">Collection of order</param>
+        /// <returns>Collection of operation</returns>
         public List<Operation> FindTheLongestAndExpensiveOperation(List<Order> orders) 
         {
             List<Operation> operations = new List<Operation>();
@@ -141,6 +181,13 @@ namespace LunchroomLibrary.DataWork
                     select d).ToList();
             return itog;
         }
+        /// <summary>
+        /// Method for lookin the cost of cooking for the period
+        /// </summary>
+        /// <param name="start">start date</param>
+        /// <param name="end">end date</param>
+        /// <param name="orders">Collection of order</param>
+        /// <returns>Collection of string</returns>
         public List<string> LookTheCostsOfCooking(DateTime start, DateTime end, List<Order> orders) 
         {
             List<string> rez = new List<string>();

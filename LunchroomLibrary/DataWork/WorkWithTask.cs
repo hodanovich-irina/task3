@@ -8,10 +8,15 @@ using System.Threading.Tasks;
 namespace LunchroomLibrary.DataWork
 {
     /// <summary>
-    /// Класс для работы с Task
+    /// Class for work with Task
     /// </summary>
     public class WorkWithTask
     {
+        /// <summary>
+        /// Method for create collection of order
+        /// </summary>
+        /// <param name="fileName">file name</param>
+        /// <returns>collection of order</returns>
         public List<Order> CreateList(string fileName)
         {
             JSONWorking jSONWorking = new JSONWorking();
