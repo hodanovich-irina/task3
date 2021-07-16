@@ -82,7 +82,7 @@ namespace LunchroomLibrary.DataWork
             }
 
         }
-        public async Task<List<Order>> JsonReadAsync(string fileName) 
+        public async Task<List<Order>> JsonRead(string fileName) 
         {
             Order[] orders = null;
             using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate))

@@ -12,10 +12,10 @@ namespace LunchroomLibrary.DataWork
     /// </summary>
     public class WorkWithTask
     {
-        public List<Order> CreateList()
+        public List<Order> CreateList(string fileName)
         {
             JSONWorking jSONWorking = new JSONWorking();
-            var data = jSONWorking.JsonReadAsync("orderss.json");
+            var data = jSONWorking.JsonRead(fileName);
 
             List<Order> AllOrder = new List<Order>();
             for (int i = 0; i < data.Result.Count; i++)
