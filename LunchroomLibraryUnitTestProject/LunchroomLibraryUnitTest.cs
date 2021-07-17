@@ -265,5 +265,16 @@ namespace LunchroomLibraryUnitTestProject
                 res = v.ToString();
             Assert.AreEqual("Mixing", res);
         }
+        /// <summary>
+        /// Testing method for new class
+        /// </summary>
+        [TestMethod]
+        public void TestMethodForNewClass()
+        {
+            Operation operation = new MixingSalad("MixingSalad", 89, 98, new DateTime(2021, 7, 15), 1, 3);
+            Operation operation1 = new MixingSalad() { Name =  "MixingSalad", Lasting = 89, Price = 98, StartOperation = new DateTime(2021, 7, 15), Number = 1, MaxNumber = 3 };
+            var actual = operation.Equals(operation1);
+            Assert.IsTrue(actual);
+        }
     }
 }

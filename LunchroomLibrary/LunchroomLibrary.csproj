@@ -84,6 +84,7 @@
     <Compile Include="Operations\IOperation.cs" />
     <Compile Include="LunchroomMenu\Salad.cs" />
     <Compile Include="Operations\Mixing.cs" />
+    <Compile Include="Operations\MixingSalad.cs" />
     <Compile Include="Operations\Operation.cs" />
     <Compile Include="Operations\ProductiveCapacity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
