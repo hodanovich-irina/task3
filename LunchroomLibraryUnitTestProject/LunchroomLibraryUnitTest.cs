@@ -33,7 +33,7 @@ namespace LunchroomLibraryUnitTestProject
         {
             Dish dish = new Dish("Draniki", new Ingredient[] { new Ingredient(StorageConditions.InKitchenCabinet, "Potato", 1, 2), new Ingredient(StorageConditions.InRefrigerator, "Egg", 1, 2) }, new Operation[] { new Mixing("Mixing", 20, 2, new DateTime(2021, 7, 17, 10, 10, 10), 3, 3) });
             var actual = dish.GetHashCode();
-            Assert.AreEqual(605160021, actual);
+            Assert.AreEqual(113008304, actual);
         }
         /// <summary>
         /// Testing method Equals() in Dish
@@ -100,7 +100,7 @@ namespace LunchroomLibraryUnitTestProject
         {
             Order order = new Order(new Dish[] { new Dish("Salad", new Ingredient[] { new Ingredient() { StorageConditions = StorageConditions.InRefrigerator, IngredientName = "Tomato", Price = 1, Number = 2 }, new Ingredient() { StorageConditions = StorageConditions.InRefrigerator, IngredientName = "Salt", Price = 0.5, Number = 1 } }, new Operation[] { new Mixing() { Name = "Mixing", Lasting = 89, Price = 98, StartOperation = new DateTime(2021, 7, 15), Number = 1, MaxNumber = 3 } }) }, new Drink[] { new Drink("Juice", 1) }, 1, new DateTime(2011, 11, 11));
             var actual = order.GetHashCode();
-            Assert.AreEqual(-856717928, actual);
+            Assert.AreEqual(-1845586653, actual);
         }
         /// <summary>
         /// Testing method Equals() in Order
@@ -158,9 +158,9 @@ namespace LunchroomLibraryUnitTestProject
         {
             JSONWorking working = new JSONWorking();
             Order[] orders = new Order[] { new Order() { Dishes = new Dish[] { new Dish("Salad", new Ingredient[] { new Ingredient() { StorageConditions = StorageConditions.InRefrigerator, IngredientName = "Tomato", Price = 1, Number = 2 }, new Ingredient() { StorageConditions = StorageConditions.InRefrigerator, IngredientName = "Salt", Price = 0.5, Number = 1 } }, new Operation[] { new Mixing() { Name = "Mixing", Lasting = 89, Price = 98, StartOperation = new DateTime(2021, 7, 15), Number = 1, MaxNumber = 3 } }) }, Drinks = new Drink[] { new Drink("Juice", 1) }, ClientId = 1, Date = new DateTime(2011, 11, 11) } };
-            await working.JsonSerialize("orders.json", orders);
+            await working.JsonSerialize(@"../../orders.json", orders);
             WorkWithTask task = new WorkWithTask();
-            List<Order> AllOrder = task.CreateList("orders.json");
+            List<Order> AllOrder = task.CreateList(@"../../orders.json");
             WorkWithData work = new WorkWithData();
             string res = "";
             foreach (var v in work.FreeProductiveCapacity(AllOrder))
@@ -175,7 +175,7 @@ namespace LunchroomLibraryUnitTestProject
         public void TestMethodFindIngredient() 
         {
             JSONWorking jSON = new JSONWorking(); ;
-            List<Order> AllOrder = jSON.JsonRead("orders.json").Result;
+            List<Order> AllOrder = jSON.JsonRead(@"../../orders.json").Result;
             WorkWithData work = new WorkWithData();
             string res = "";
             foreach (var v in work.FindIngredient(StorageConditions.InRefrigerator, AllOrder))
@@ -189,7 +189,7 @@ namespace LunchroomLibraryUnitTestProject
         public void TestMethodLookOrders()
         {
             WorkWithTask task = new WorkWithTask();
-            List<Order> AllOrder = task.CreateList("orders.json");
+            List<Order> AllOrder = task.CreateList(@"../../orders.json");
             WorkWithData work = new WorkWithData();
             string res = "";
             foreach (var v in work.LookOrders(new DateTime(2011, 1, 1), new DateTime(2012, 1, 1), AllOrder))
@@ -203,7 +203,7 @@ namespace LunchroomLibraryUnitTestProject
         public void TestMethodLookTheCostsOfCooking()
         {
             WorkWithTask task = new WorkWithTask();
-            List<Order> AllOrder = task.CreateList("orders.json");
+            List<Order> AllOrder = task.CreateList(@"../../orders.json");
             WorkWithData work = new WorkWithData();
             string res = work.LookTheCostsOfCooking(new DateTime(2011, 1, 1), new DateTime(2012, 1, 1), AllOrder)[0];
             Assert.AreEqual("Salad(cooking costs: 99,5)", res);
@@ -215,7 +215,7 @@ namespace LunchroomLibraryUnitTestProject
         public void TestMethodNumberOfIngrediets()
         {
             WorkWithTask task = new WorkWithTask();
-            List<Order> AllOrder = task.CreateList("orders.json");
+            List<Order> AllOrder = task.CreateList(@"../../orders.json");
             WorkWithData work = new WorkWithData();
             string res = "";
             foreach (var v in work.NumberOfIngrediets(AllOrder))
@@ -230,7 +230,7 @@ namespace LunchroomLibraryUnitTestProject
         public void TestMethodTheMostPopularIngredient()
         {
             WorkWithTask task = new WorkWithTask();
-            List<Order> AllOrder = task.CreateList("orders.json");
+            List<Order> AllOrder = task.CreateList(@"../../orders.json");
             WorkWithData work = new WorkWithData();
             string res = "";
             foreach (var v in work.TheMostPopularIngredient(AllOrder))
@@ -244,7 +244,7 @@ namespace LunchroomLibraryUnitTestProject
         public void TestMethodTheMostUnpopularIngredient()
         {
             WorkWithTask task = new WorkWithTask();
-            List<Order> AllOrder = task.CreateList("orders.json");
+            List<Order> AllOrder = task.CreateList(@"../../orders.json");
             WorkWithData work = new WorkWithData();
             string res = "";
             foreach (var v in work.TheMostUnpopularIngredient(AllOrder))
@@ -258,7 +258,7 @@ namespace LunchroomLibraryUnitTestProject
         public void TestMethodFindTheLongestAndExpensiveOperation()
         {
             WorkWithTask task = new WorkWithTask();
-            List<Order> AllOrder = task.CreateList("orders.json");
+            List<Order> AllOrder = task.CreateList(@"../../orders.json");
             WorkWithData work = new WorkWithData();
             string res = "";
             foreach (var v in work.FindTheLongestAndExpensiveOperation(AllOrder))
