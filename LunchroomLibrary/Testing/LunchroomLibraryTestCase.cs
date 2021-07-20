@@ -1,23 +1,26 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using NUnit.Framework;
 using LunchroomLibrary.DataWork;
 using LunchroomLibrary.LunchroomMenu;
 using LunchroomLibrary.LunchroomWork;
 using LunchroomLibrary.Operations;
-using System.Collections.Generic;
 
-namespace LunchroomLibraryUnitTestProject
+namespace LunchroomLibrary.Testing
 {
     /// <summary>
     /// Class for testing LunchroomLibrary
     /// </summary>
-    [TestClass]
-    public class LunchroomLibraryUnitTest
+    [TestFixture]
+    class LunchroomLibraryTestCase
     {
         /// <summary>
         /// Testing method ToString() in Dish
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestMethodToStringDish()
         {
             Dish dish = new Dish("Draniki", new Ingredient[] { new Ingredient(StorageConditions.InKitchenCabinet, "Potato", 1, 2), new Ingredient(StorageConditions.InRefrigerator, "Egg", 1, 2) }, new Operation[] { new Mixing("Mixing", 20, 2, new DateTime(2021, 7, 17, 10, 10, 10), 3, 3) });
@@ -25,20 +28,11 @@ namespace LunchroomLibraryUnitTestProject
             var except = "Draniki";
             Assert.AreEqual(except, actual);
         }
-        /// <summary>
-        /// Testing method GetHashCode() in Dish
-        /// </summary>
-        [TestMethod]
-        public void TestMethodGetHashCodeDish()
-        {
-            Dish dish = new Dish("Draniki", new Ingredient[] { new Ingredient(StorageConditions.InKitchenCabinet, "Potato", 1, 2), new Ingredient(StorageConditions.InRefrigerator, "Egg", 1, 2) }, new Operation[] { new Mixing("Mixing", 20, 2, new DateTime(2021, 7, 17, 10, 10, 10), 3, 3) });
-            var actual = dish.GetHashCode();
-            Assert.AreEqual(113008304, actual);
-        }
+
         /// <summary>
         /// Testing method Equals() in Dish
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestMethodEqualsDish()
         {
             Dish dish = new Dish("Draniki", new Ingredient[] { new Ingredient(StorageConditions.InKitchenCabinet, "Potato", 1, 2), new Ingredient(StorageConditions.InRefrigerator, "Egg", 1, 2) }, new Operation[] { new Mixing("Mixing", 20, 2, new DateTime(2021, 7, 17, 10, 10, 10), 3, 3) });
@@ -50,7 +44,7 @@ namespace LunchroomLibraryUnitTestProject
         /// <summary>
         /// Testing method ToString() in Drink
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestMethodToStringDrink()
         {
             Drink drink = new Drink("Juice", 1);
@@ -61,7 +55,7 @@ namespace LunchroomLibraryUnitTestProject
         /// <summary>
         /// Testing method GetHashCode() Drink
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestMethodGetHashCodeDrink()
         {
             Drink drink = new Drink("Juice", 1);
@@ -72,11 +66,11 @@ namespace LunchroomLibraryUnitTestProject
         /// <summary>
         /// Testing method Equals() in Drink
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestMethodEqualsDrink()
         {
             Drink drink = new Drink("Juice", 1);
-            Drink drink1 = new Drink() {Name = "Juice", Price = 1 };
+            Drink drink1 = new Drink() { Name = "Juice", Price = 1 };
 
             var actual = drink.Equals(drink1);
             Assert.IsTrue(actual);
@@ -84,7 +78,7 @@ namespace LunchroomLibraryUnitTestProject
         /// <summary>
         /// Testing method ToString() in Order
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestMethodToStringOrder()
         {
             Order order = new Order(new Dish[] { new Dish("Salad", new Ingredient[] { new Ingredient() { StorageConditions = StorageConditions.InRefrigerator, IngredientName = "Tomato", Price = 1, Number = 2 }, new Ingredient() { StorageConditions = StorageConditions.InRefrigerator, IngredientName = "Salt", Price = 0.5, Number = 1 } }, new Operation[] { new Mixing() { Name = "Mixing", Lasting = 89, Price = 98, StartOperation = new DateTime(2021, 7, 15), Number = 1, MaxNumber = 3 } }) }, new Drink[] { new Drink("Juice", 1) }, 1, new DateTime(2011, 11, 11));
@@ -93,23 +87,13 @@ namespace LunchroomLibraryUnitTestProject
             Assert.AreEqual(except, actual);
         }
         /// <summary>
-        /// Testing method GetHashCode() in Order
-        /// </summary>
-        [TestMethod]
-        public void TestMethodGetHashCodeOrder()
-        {
-            Order order = new Order(new Dish[] { new Dish("Salad", new Ingredient[] { new Ingredient() { StorageConditions = StorageConditions.InRefrigerator, IngredientName = "Tomato", Price = 1, Number = 2 }, new Ingredient() { StorageConditions = StorageConditions.InRefrigerator, IngredientName = "Salt", Price = 0.5, Number = 1 } }, new Operation[] { new Mixing() { Name = "Mixing", Lasting = 89, Price = 98, StartOperation = new DateTime(2021, 7, 15), Number = 1, MaxNumber = 3 } }) }, new Drink[] { new Drink("Juice", 1) }, 1, new DateTime(2011, 11, 11));
-            var actual = order.GetHashCode();
-            Assert.AreEqual(-1845586653, actual);
-        }
-        /// <summary>
         /// Testing method Equals() in Order
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestMethodEqualsOrder()
         {
             Order order = new Order() { Dishes = new Dish[] { new Dish("Salad", new Ingredient[] { new Ingredient() { StorageConditions = StorageConditions.InRefrigerator, IngredientName = "Tomato", Price = 1, Number = 2 }, new Ingredient() { StorageConditions = StorageConditions.InRefrigerator, IngredientName = "Salt", Price = 0.5, Number = 1 } }, new Operation[] { new Mixing() { Name = "Mixing", Lasting = 89, Price = 98, StartOperation = new DateTime(2021, 7, 15), Number = 1, MaxNumber = 3 } }) }, Drinks = new Drink[] { new Drink("Juice", 1) }, ClientId = 1, Date = new DateTime(2011, 11, 11) };
-            Order order1 = new Order(new Dish[] { new Dish("Salad", new Ingredient[] { new Ingredient() { StorageConditions = StorageConditions.InRefrigerator, IngredientName = "Tomato", Price = 1, Number = 2 }, new Ingredient() { StorageConditions = StorageConditions.InRefrigerator, IngredientName = "Salt", Price = 0.5, Number = 1 } }, new Operation[] { new Mixing() { Name = "Mixing", Lasting = 89, Price = 98, StartOperation = new DateTime(2021, 7, 15), Number = 1, MaxNumber = 3 } }) }, new Drink[] { new Drink("Juice", 1) }, 1, new DateTime(2011, 11, 11) );
+            Order order1 = new Order(new Dish[] { new Dish("Salad", new Ingredient[] { new Ingredient() { StorageConditions = StorageConditions.InRefrigerator, IngredientName = "Tomato", Price = 1, Number = 2 }, new Ingredient() { StorageConditions = StorageConditions.InRefrigerator, IngredientName = "Salt", Price = 0.5, Number = 1 } }, new Operation[] { new Mixing() { Name = "Mixing", Lasting = 89, Price = 98, StartOperation = new DateTime(2021, 7, 15), Number = 1, MaxNumber = 3 } }) }, new Drink[] { new Drink("Juice", 1) }, 1, new DateTime(2011, 11, 11));
 
             var actual = order1.Equals(order);
             Assert.IsFalse(actual);
@@ -118,7 +102,7 @@ namespace LunchroomLibraryUnitTestProject
         /// <summary>
         /// Testing method ToString() Operation
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestMethodToStringOperation()
         {
             Operation operation = new Operation("Mixing", 89, 98, new DateTime(2021, 7, 15), 1, 3);
@@ -130,7 +114,7 @@ namespace LunchroomLibraryUnitTestProject
         /// <summary>
         /// Testing method GetHashCode() Operation
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestMethodGetHashCodeOperation()
         {
             Operation operation = new Operation("Mixing", 89, 98, new DateTime(2021, 7, 15), 1, 3);
@@ -140,7 +124,7 @@ namespace LunchroomLibraryUnitTestProject
         /// <summary>
         /// Testing method Equals() in Operation
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestMethodEqualsOperation()
         {
             Operation operation = new Operation() { Name = "Mixing", Lasting = 89, Price = 98, StartOperation = new DateTime(2021, 7, 15), Number = 1, MaxNumber = 3 };
@@ -153,7 +137,7 @@ namespace LunchroomLibraryUnitTestProject
         /// <summary>
         /// Testing method FreeProductiveCapacity()
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public async System.Threading.Tasks.Task TestMethodFreeProductiveCapacityAsync()
         {
             JSONWorking working = new JSONWorking();
@@ -166,13 +150,13 @@ namespace LunchroomLibraryUnitTestProject
             foreach (var v in work.FreeProductiveCapacity(AllOrder))
                 res = v;
             Assert.AreEqual("Mixing(free productive capacity: 3)", res);
-           
+
         }
         /// <summary>
         /// Testing method FindIngredient()
         /// </summary>
-        [TestMethod]
-        public void TestMethodFindIngredient() 
+        [TestCase]
+        public void TestMethodFindIngredient()
         {
             JSONWorking jSON = new JSONWorking(); ;
             List<Order> AllOrder = jSON.JsonRead(@"../../orders.json").Result;
@@ -185,7 +169,7 @@ namespace LunchroomLibraryUnitTestProject
         /// <summary>
         /// Testing method LookOrders()
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestMethodLookOrders()
         {
             WorkWithTask task = new WorkWithTask();
@@ -199,7 +183,7 @@ namespace LunchroomLibraryUnitTestProject
         /// <summary>
         /// Testing method LookTheCostsOfCooking()
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestMethodLookTheCostsOfCooking()
         {
             WorkWithTask task = new WorkWithTask();
@@ -211,7 +195,7 @@ namespace LunchroomLibraryUnitTestProject
         /// <summary>
         /// Testing method NumberOfIngrediets()
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestMethodNumberOfIngrediets()
         {
             WorkWithTask task = new WorkWithTask();
@@ -226,7 +210,7 @@ namespace LunchroomLibraryUnitTestProject
         /// <summary>
         /// Testing method TheMostPopularIngredient()
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestMethodTheMostPopularIngredient()
         {
             WorkWithTask task = new WorkWithTask();
@@ -240,7 +224,7 @@ namespace LunchroomLibraryUnitTestProject
         /// <summary>
         /// Testing method TheMostUnpopularIngredient()
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestMethodTheMostUnpopularIngredient()
         {
             WorkWithTask task = new WorkWithTask();
@@ -254,7 +238,7 @@ namespace LunchroomLibraryUnitTestProject
         /// <summary>
         /// Testing method FindTheLongestAndExpensiveOperation()
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestMethodFindTheLongestAndExpensiveOperation()
         {
             WorkWithTask task = new WorkWithTask();
@@ -268,11 +252,11 @@ namespace LunchroomLibraryUnitTestProject
         /// <summary>
         /// Testing method for new class
         /// </summary>
-        [TestMethod]
+        [TestCase]
         public void TestMethodForNewClass()
         {
             Operation operation = new MixingSalad("MixingSalad", 89, 98, new DateTime(2021, 7, 15), 1, 3);
-            Operation operation1 = new MixingSalad() { Name =  "MixingSalad", Lasting = 89, Price = 98, StartOperation = new DateTime(2021, 7, 15), Number = 1, MaxNumber = 3 };
+            Operation operation1 = new MixingSalad() { Name = "MixingSalad", Lasting = 89, Price = 98, StartOperation = new DateTime(2021, 7, 15), Number = 1, MaxNumber = 3 };
             var actual = operation.Equals(operation1);
             Assert.IsTrue(actual);
         }
