@@ -18,6 +18,17 @@ namespace LunchroomLibrary.Testing
     class LunchroomLibraryTestCase
     {
         /// <summary>
+        /// Testing method ToString() in inner class
+        /// </summary>
+        [TestCase]
+        public void TestMethodToStringInInnerClass()
+        {
+            Dish.Salad dish = new Dish.Salad("Caesar salad", new Ingredient[] { new Ingredient(StorageConditions.InKitchenCabinet, "Tomato", 1, 2), new Ingredient(StorageConditions.InRefrigerator, "Cabbage", 1, 2) }, new Operation[] { new Mixing("Mixing", 20, 2, new DateTime(2021, 7, 17, 10, 10, 10), 3, 3) });
+            var actual = dish.ToString();
+            var except = "Caesar salad";
+            Assert.AreEqual(except, actual);
+        }
+        /// <summary>
         /// Testing method ToString() in Dish
         /// </summary>
         [TestCase]

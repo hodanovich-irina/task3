@@ -89,7 +89,6 @@
     <Compile Include="Operations\Frying.cs" />
     <Compile Include="LunchroomMenu\Ingredient.cs" />
     <Compile Include="Operations\IOperation.cs" />
-    <Compile Include="LunchroomMenu\Salad.cs" />
     <Compile Include="Operations\Mixing.cs" />
     <Compile Include="Operations\MixingSalad.cs" />
     <Compile Include="Operations\Operation.cs" />
